@@ -37,6 +37,16 @@ def get_clientes():
     except Exception as ex:
         return jsonify({'message': 'Error {0}'.format(ex)}), 500
 
+@app.route('/get_points', methods=['GET'])
+def get_points():
+    try:
+        points = model.get_points()
+        if points is None:
+            return jsonify({'message': 'Data not found!'}), 404
+        else:
+            return points
+    except Exception as ex:
+        return jsonify({'message': 'Error {0}'.format(ex)}), 500
 
 
 if __name__ == '__main__':
